@@ -1,7 +1,7 @@
 import { Button, Input } from '@ensdomains/thorin'
 import { ConnectButton } from '@rainbow-me/rainbowkit'
 // @ts-ignore
-import { fromIpfs } from 'content-hash'
+import ch from 'content-hash'
 import Head from 'next/head'
 import { useState } from 'react'
 import { useAccount, useSignMessage } from 'wagmi'
@@ -30,7 +30,7 @@ export default function App() {
     owner: address!,
     addresses: { '60': address },
     texts: { description },
-    contenthash: `0x${fromIpfs(contentHash)}`,
+    contenthash: `0x${contentHash ? ch.fromIpfs(contentHash) : ""}`,
     signature: {
       hash: data!,
       message: variables?.message!,
